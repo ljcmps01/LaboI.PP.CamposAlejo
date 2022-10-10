@@ -12,6 +12,8 @@
 #include <stdlib.h>
 #include "INPUT.h"
 
+#define MIN_TRASNPORTE_ID 10000
+
 typedef struct
 {
 	int idTransporte;
@@ -21,6 +23,17 @@ typedef struct
 	int tipoId;
 	int isEmpty;
 }eTransporte;
+
+int hardcodearTransporte(eTransporte *listaTransporte, int tam, int *pSigID);
+
+/**
+ * @brief	Busca la siguiente entidad de transporte vacia
+ *
+ * @param listaTransporte	puntero a la lista de entidades de transporte
+ * @param tam	Cantidad maxima de transporte
+ * @return retorna el subindice correspondiente a la entidad vacia
+ */
+int siguienteTransporteEmpty(eTransporte *listaTransporte, int tam);
 
 /**
  * @brief inicializa los campos isEmpty de la estructura eTransporte en 1

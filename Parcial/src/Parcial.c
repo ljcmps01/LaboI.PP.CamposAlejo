@@ -22,13 +22,17 @@ int main(void) {
 	setbuf(stdout,NULL);
 
 	eTransporte listaTransportes[TAM];
+	int indice=MIN_TRASNPORTE_ID;
 
 	if(inicializarTransporte(listaTransportes, TAM))
 	{
 		printf("Error de inicializacion\n");
-		system("PAUSE");
 		return EXIT_FAILURE;
 	}
+
+	hardcodearTransporte(listaTransportes, TAM, &indice);
+
+	printf("Siguiente indice libre: %d\n",siguienteTransporteEmpty(listaTransportes, TAM));
 
 	switch (imprimirMenuPrincipal()) {
 		case 1:
@@ -53,6 +57,7 @@ int main(void) {
 			printf("Informe\n");
 			break;
 		default:
+			printf("SALIDA\n");
 			break;
 	}
 

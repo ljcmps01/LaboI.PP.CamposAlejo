@@ -10,7 +10,7 @@
 
 #include "FECHA.h"
 
-#define MIN_ID 20000
+#define MIN_HOJA_ID 20000
 
 typedef struct
 {

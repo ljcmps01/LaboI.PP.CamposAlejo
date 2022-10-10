@@ -11,8 +11,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define minID 1000
-
 typedef struct
 {
 	int idTipo;

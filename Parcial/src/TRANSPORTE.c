@@ -7,6 +7,46 @@
 
 #include "TRANSPORTE.h"
 
+#define HARDCODED_N 4
+
+int hardcodearTransporte(eTransporte *listaTransporte, int tam, int *pSigID)
+{
+	eTransporte datosHardcodeados[HARDCODED_N]=
+	{
+			{*pSigID,"gatos",0,2,1000,0},
+			{*pSigID++,"electronica",0,2,1002,0},
+			{*pSigID++,"basura",0,2,1003,0},
+			{*pSigID++,"comida",0,2,1000,0}
+	};
+
+	if(listaTransporte!=NULL && tam >0 && pSigID!=NULL)
+	{
+		for(int i=0;i<HARDCODED_N;i++)
+		{
+			*(listaTransporte+i)=*(datosHardcodeados+i);
+		}
+	}
+	return EXIT_FAILURE;
+}
+
+int siguienteTransporteEmpty(eTransporte *listaTransporte, int tam)
+{
+	int siguienteLibre=0;
+
+	if(listaTransporte!=NULL && tam>0)
+	{
+		while(siguienteLibre<tam)
+		{
+			if(((listaTransporte+siguienteLibre)->isEmpty))
+			{
+				return siguienteLibre;
+			}
+			siguienteLibre++;
+		}
+	}
+	return -1;
+}
+
 int imprimirMenuPrincipal(void)
 {
 	int opcion;
@@ -22,7 +62,7 @@ int imprimirMenuPrincipal(void)
 	printf("8 - Salir\n");
 	printf("\n");
 
-	intEnRango(&opcion, 1, 7);
+	intEnRango(&opcion, 1, 8);
 
 	return opcion;
 }

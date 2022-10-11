@@ -9,13 +9,32 @@
 //ELEVADOR)
 #include "TIPO.h"
 
-eTipo tipos[4]=
+eTipo tipos[TAM_TIPOS]=
 {
 		{1000,"Camion recto"},
 		{1001,"Camion remolque"},
 		{1002,"Camion semirremolque"},
 		{1003,"Camion elevador"}
 };
+
+
+int getDescripcionTipo(char *destino,int tipoID,eTipo* listaTipos)
+{
+	if(destino!=NULL && listaTipos!=NULL)
+	{
+		for(int i=0;i<TAM_TIPOS;i++)
+		{
+			if(tipoID==(listaTipos+i)->idTipo)
+			{
+				strcpy(destino,(listaTipos+i)->descripcion);
+				return 1;
+			}
+		}
+		printf("idTipo error\n");
+		return 0;
+	}
+	return 0;
+}
 
 void listarTipos(eTipo* listaTipos, int tam)
 {

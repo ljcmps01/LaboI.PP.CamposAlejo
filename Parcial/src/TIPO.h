@@ -10,6 +10,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#define TAM_TIPOS 4
 
 typedef struct
 {
@@ -17,8 +20,9 @@ typedef struct
 	char descripcion[30];
 }eTipo;
 
-eTipo tipos[4];
+eTipo tipos[TAM_TIPOS];
 
+int getDescripcionTipo(char *destino,int tipoID,eTipo* listaTipos);
 
 void listarTipos(eTipo* listaTipos, int tam);
 

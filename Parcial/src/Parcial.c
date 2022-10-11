@@ -24,6 +24,8 @@ int main(void) {
 	eTransporte listaTransportes[TAM];
 	int indice=MIN_TRASNPORTE_ID;
 
+	int salida=0;
+
 	if(inicializarTransporte(listaTransportes, TAM))
 	{
 		printf("Error de inicializacion\n");
@@ -34,32 +36,46 @@ int main(void) {
 
 	printf("Siguiente indice libre: %d\n",siguienteTransporteEmpty(listaTransportes, TAM));
 
-	switch (imprimirMenuPrincipal()) {
-		case 1:
-			printf("Alta transporte\n");
-			break;
-		case 2:
-			printf("Modificar Transporte\n");
-			break;
-		case 3:
-			printf("Baja Transporte\n");
-			break;
-		case 4:
-			printf("Lista Transporte\n");
-			break;
-		case 5:
-			printf("Listar Tipos\n");
-			break;
-		case 6:
-			printf("Listar hojas de ruta\n");
-			break;
-		case 7:
-			printf("Informe\n");
-			break;
-		default:
-			printf("SALIDA\n");
-			break;
-	}
+	do
+	{
+		switch (imprimirMenuPrincipal()) {
+			case 1:
+				printf("Alta transporte\n");
+				if(altaTransporte(listaTransportes, TAM, &indice))
+				{
+					printf("Alta fallida\n");
+				}
+				else
+				{
+					printf("Alta exitosa\n");
+				}
+				break;
+			case 2:
+				printf("Modificar Transporte\n");
+				break;
+			case 3:
+				printf("Baja Transporte\n");
+				break;
+			case 4:
+				printf("Lista Transporte\n");
+				listarTransportes(listaTransportes,TAM);
+				break;
+			case 5:
+				printf("Listar Tipos\n");
+				break;
+			case 6:
+				printf("Listar hojas de ruta\n");
+				break;
+			case 7:
+				printf("Informe\n");
+				break;
+			default:
+				printf("SALIDA\n");
+				salida=1;
+				break;
+		}
+	}while(!salida);
+
 
 	printf("\nPROGRAMA FINALIZADO\n");
 	return EXIT_SUCCESS;

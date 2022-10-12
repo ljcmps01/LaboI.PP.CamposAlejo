@@ -10,29 +10,78 @@
 #define HARDCODED_N 4
 
 
-int listarTransportes(eTransporte *listaTransporte, int tam)
+
+int bajaTransporte(eTransporte *listaTransporte, int tam)
 {
+	int indiceBaja;
 	if(listaTransporte!=NULL && tam>0)
 	{
-		printf("\t\tLISTA DE TRANSPORTES\n");
-		printf("-----------------------------------------------------------------\n");
-		printf("|  ID |     Descripcion    |  Peso |Bultos |        tipoID      |\n");
-		printf("-----------------------------------------------------------------\n");
-		for(int i=0;i<tam;i++)
+		if(!listarTransportes(listaTransporte, tam))
 		{
-			if((listaTransporte+i)->isEmpty)
-			{
-				break;
-			}
-			//printf("|%-5d|%-20s|%7d|%7d|%7d|\n",(listaTransporte+i)->idTransporte,(listaTransporte+i)->descripcion,(listaTransporte+i)->pesoCarga,(listaTransporte+i)->cantidadBultos,(listaTransporte+i)->tipoId);
-			mostrarFilaTransporte((listaTransporte+i));
+			printf("ERROR - No hay entidades cargadas\n");
 		}
-		return EXIT_SUCCESS;
+		else
+		{
+			printf("Ingrese el ID del transporte a borrar\n");
+			cargarInt(&indiceBaja);
+			indiceBaja=indicePorID(listaTransporte, tam, indiceBaja);
+
+			if(indiceBaja!=-1 && !((listaTransporte+indiceBaja)->isEmpty))
+			{
+				(listaTransporte+indiceBaja)->isEmpty=1;
+				return EXIT_SUCCESS;
+			}
+			else
+			{
+				printf("ERROR - no se encontro ID\n");
+			}
+		}
 	}
 	return EXIT_FAILURE;
-
 }
 
+int indicePorID(eTransporte *listaTransporte, int tam, int id)
+{
+	int indice=-1;
+	if(listaTransporte!=NULL && tam>0)
+	{
+		for(int i=0;i<tam;i++)
+		{
+			if((listaTransporte+i)->idTransporte==id)
+			{
+				indice=i;
+				break;
+			}
+		}
+	}
+	return indice;
+}
+
+int listarTransportes(eTransporte *listaTransporte, int tam)
+{
+	int contadorDeTransportes=0;
+	if(listaTransporte!=NULL && tam>0)
+	{
+
+		for(int i=0;i<tam;i++)
+		{
+			if(!(listaTransporte+i)->isEmpty)
+			{
+				if(contadorDeTransportes==0)
+				{
+					printf("\t\tLISTA DE TRANSPORTES\n");
+					printf("-----------------------------------------------------------------\n");
+					printf("|  ID |     Descripcion    |  Peso |Bultos |        tipoID      |\n");
+					printf("-----------------------------------------------------------------\n");
+				}
+				mostrarFilaTransporte((listaTransporte+i));
+				contadorDeTransportes++;
+			}
+		}
+	}
+	return contadorDeTransportes;
+
+}
 
 int mostrarFilaTransporte(eTransporte *transporte)
 {

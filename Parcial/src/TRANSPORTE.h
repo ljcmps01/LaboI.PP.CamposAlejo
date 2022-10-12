@@ -19,15 +19,40 @@
 typedef struct
 {
 	int idTransporte;
-	char *descripcion;	//max 30
+	char descripcion[30];	//max 30
 	int pesoCarga;
 	int cantidadBultos;
 	int tipoId;
 	int isEmpty;
 }eTransporte;
 
+int bajaTransporte(eTransporte *listaTransporte, int tam);
+
+/**
+ * @brief obtiene el indice de la entidad que contenga el id dado como parametro
+ *
+ * @param listaTransporte puntero a la lista de transportes
+ * @param tam tamaño de la lista
+ * @param id id a buscar
+ * @return retorna el indice obtenido o -1 en caso de no encontrar coincidencia
+ */
+int indicePorID(eTransporte *listaTransporte, int tam, int id);
+
+/**
+ * @brief lista fila por fila todos los transportes cargados
+ *
+ * @param listaTransporte puntero a la lista de transportes
+ * @param tam tamaño de la lista
+ * @return retorna 0 en caso de exito, 1 en caso de error
+ */
 int listarTransportes(eTransporte *listaTransporte, int tam);
 
+/**
+ * @brief Muestra los datos de una entidad dada como parametro
+ *
+ * @param transporte puntero a la entidad a mostrar
+ * @return retorna la cantidad de entidades impresas
+ */
 int mostrarFilaTransporte(eTransporte *transporte);
 
 /**

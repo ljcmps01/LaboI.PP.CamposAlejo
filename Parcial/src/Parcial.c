@@ -25,6 +25,7 @@ int main(void) {
 	int indice=MIN_TRASNPORTE_ID;
 
 	int salida=0;
+	int test;
 
 	if(inicializarTransporte(listaTransportes, TAM))
 	{
@@ -51,10 +52,21 @@ int main(void) {
 				}
 				break;
 			case 2:
-				printf("Modificar Transporte\n");
+				listarTransportes(listaTransportes, TAM);
+				printf("ingresar id de Transporte\n");
+				scanf("%d",&test);
+				printf("se modifico el indice %d\n",indicePorID(listaTransportes, TAM, test));
 				break;
 			case 3:
 				printf("Baja Transporte\n");
+				if(!bajaTransporte(listaTransportes, TAM))
+				{
+					printf("Se dio de baja el transporte exitosamente\n");
+				}
+				else
+				{
+					printf("Error en la baja\n");
+				}
 				break;
 			case 4:
 				printf("Lista Transporte\n");

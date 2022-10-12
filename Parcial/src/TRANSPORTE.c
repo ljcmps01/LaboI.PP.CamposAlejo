@@ -10,10 +10,68 @@
 #define HARDCODED_N 4
 
 
+int modificarTransporte(eTransporte *listaTransporte, int tam)
+{
+	int indiceModificacion;
+	int idModificacion;
+	if(listaTransporte!=NULL && tam>0)
+		{
+			if(!listarTransportes(listaTransporte, tam))
+			{
+				printf("ERROR - No hay entidades cargadas\n");
+			}
+			else
+			{
+				printf("Ingrese el ID del transporte a modificar\n");
+				cargarInt(&idModificacion);
+				indiceModificacion=indicePorID(listaTransporte, tam, idModificacion);
+
+				if(indiceModificacion!=-1 && !((listaTransporte+indiceModificacion)->isEmpty))
+				{
+
+					switch (submenuModificar()) {
+						case 1:
+							printf("Ingrese nuevo peso de carga: \n");
+							cargarInt(&(listaTransporte+indiceModificacion)->pesoCarga);
+							break;
+						case 2:
+							printf("Ingrese nueva cantidad de bultos: \n");
+							cargarInt(&(listaTransporte+indiceModificacion)->cantidadBultos);
+							break;
+						default:
+
+							break;
+					}
+					return EXIT_SUCCESS;
+				}
+				else
+				{
+					printf("ERROR - no se encontro ID\n");
+				}
+			}
+		}
+		return EXIT_FAILURE;
+}
+
+
+int submenuModificar(void)
+{
+	int opcion;
+
+	printf("Que dato desea cambiar?\n");
+	printf("1 - peso de carga\n");
+	printf("2 - cantidad de bultos\n");
+	printf("3 - salir\n");
+
+	intEnRango(&opcion, 1, 3);
+
+	return opcion;
+}
 
 int bajaTransporte(eTransporte *listaTransporte, int tam)
 {
 	int indiceBaja;
+	int idBaja;
 	if(listaTransporte!=NULL && tam>0)
 	{
 		if(!listarTransportes(listaTransporte, tam))
@@ -23,8 +81,8 @@ int bajaTransporte(eTransporte *listaTransporte, int tam)
 		else
 		{
 			printf("Ingrese el ID del transporte a borrar\n");
-			cargarInt(&indiceBaja);
-			indiceBaja=indicePorID(listaTransporte, tam, indiceBaja);
+			cargarInt(&idBaja);
+			indiceBaja=indicePorID(listaTransporte, tam, idBaja);
 
 			if(indiceBaja!=-1 && !((listaTransporte+indiceBaja)->isEmpty))
 			{
@@ -99,7 +157,6 @@ int altaTransporte(eTransporte *listaTransporte, int tam, int* pSigID)
 {
 	eTransporte bufferTransporte;
 	int indice;
-//	char descripcion[20];
 
 	if(listaTransporte!=NULL && tam>0 && pSigID!=NULL)
 	{
@@ -115,8 +172,6 @@ int altaTransporte(eTransporte *listaTransporte, int tam, int* pSigID)
 			printf("ingrese descripcion del transporte\n");
 			fflush(stdin);
 			scanf("%30s",bufferTransporte.descripcion);
-			printf("Se ingreso: %s\n",bufferTransporte.descripcion);
-//		strcpy(bufferTransporte.descripcion,descripcion);
 
 		printf("ingrese peso de la carga\n");
 		cargarInt(&bufferTransporte.pesoCarga);

@@ -26,6 +26,11 @@ typedef struct
 	int isEmpty;
 }eTransporte;
 
+
+int modificarTransporte(eTransporte *listaTransporte, int tam);
+
+int submenuModificar(void);
+
 int bajaTransporte(eTransporte *listaTransporte, int tam);
 
 /**

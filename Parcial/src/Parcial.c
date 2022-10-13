@@ -75,7 +75,7 @@ int main(void) {
 				printf("Lista Transporte\n");
 				if(!listarTransportes(listaTransportes,TAM))
 				{
-					printf("ERROR - No hay transportes cargados");
+					printf("ERROR - No hay transportes cargados\n");
 				}
 				break;
 			case 5:

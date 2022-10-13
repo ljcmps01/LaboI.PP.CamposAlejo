@@ -10,6 +10,78 @@
 #define HARDCODED_N 4
 
 
+int existeTransporte(eTransporte *listaTransporte, int tam, int id)
+{
+	if(listaTransporte!=NULL && tam>0)
+	{
+		for(int i=0;i<tam;i++)
+		{
+			if(id==(listaTransporte+i)->idTransporte)
+			{
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
+int ordenarTransportes(eTransporte *listaTransporte, int tam)
+{
+	char tipoDescripcionA[30];
+	char tipoDescripcionB[30];
+
+	int comparacionTipo;
+	int comparacionDesc;
+	if(listaTransporte!=NULL && tam>0)
+	{
+		for(int i=0; i<tam-1;i++)
+		{
+			if((listaTransporte+i)->isEmpty)continue;
+
+			getDescripcionTipo(tipoDescripcionA, (listaTransporte+i)->tipoId, tipos);
+
+			for(int j=i+1;j<tam;j++)
+			{
+				if((listaTransporte+j)->isEmpty)continue;
+
+				getDescripcionTipo(tipoDescripcionB, (listaTransporte+j)->tipoId, tipos);
+
+				comparacionTipo=strcmp(tipoDescripcionA,tipoDescripcionB);
+				if(comparacionTipo>0)
+				{
+					swapTransporte(listaTransporte+i, listaTransporte+j);
+				}
+
+				else if (comparacionTipo==0)
+				{
+					comparacionDesc=strcmp((listaTransporte+i)->descripcion,(listaTransporte+j)->descripcion);
+
+					if(comparacionDesc>0)
+					{
+						swapTransporte(listaTransporte+i, listaTransporte+j);
+					}
+				}
+			}
+		}
+
+		return EXIT_SUCCESS;
+	}
+	return EXIT_FAILURE;
+}
+
+int swapTransporte(eTransporte *transporteA,eTransporte *transporteB)
+{
+	eTransporte aux;
+	if(transporteA!=NULL && transporteB!=NULL)
+	{
+		aux=*transporteB;
+		*transporteB=*transporteA;
+		*transporteA=aux;
+		return EXIT_SUCCESS;
+	}
+	return EXIT_FAILURE;
+}
+
 int modificarTransporte(eTransporte *listaTransporte, int tam)
 {
 	int indiceModificacion;
@@ -120,10 +192,10 @@ int listarTransportes(eTransporte *listaTransporte, int tam)
 	int contadorDeTransportes=0;
 	if(listaTransporte!=NULL && tam>0)
 	{
-
+		ordenarTransportes(listaTransporte, tam);
 		for(int i=0;i<tam;i++)
 		{
-			if(!(listaTransporte+i)->isEmpty)
+			if(!((listaTransporte+i)->isEmpty))
 			{
 				if(contadorDeTransportes==0)
 				{
@@ -195,7 +267,7 @@ int altaTransporte(eTransporte *listaTransporte, int tam, int* pSigID)
 	}
 	else
 	{
-		printf("Error de vectores\n");
+		printf("Error de punteros\n");
 		return EXIT_FAILURE;
 	}
 
@@ -252,11 +324,12 @@ int imprimirMenuPrincipal(void)
 	printf("4 - Listar Transporte\n");
 	printf("5 - Listar Tipos\n");
 	printf("6 - Alta Hoja de Ruta\n");
-	printf("7 - Informes\n");
-	printf("8 - Salir\n");
+	printf("7 - Listar Hoja de ruta\n");
+	printf("8 - Informes\n");
+	printf("9 - Salir\n");
 	printf("\n");
 
-	intEnRango(&opcion, 1, 8);
+	intEnRango(&opcion, 1, 9);
 
 	return opcion;
 }

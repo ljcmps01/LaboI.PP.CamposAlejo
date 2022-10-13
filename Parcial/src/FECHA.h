@@ -9,6 +9,9 @@
 #define FECHA_H_
 
 #include "UTN.h"
+#include "INPUT.h"
+
+#define MIN_ANIO 2000
 
 typedef struct
 {
@@ -23,5 +26,7 @@ int validarDia(int dia);
 int validarMes(int mes);
 
 int validarAnio(int anio);
+
+void cargarFecha(eFecha fecha);
 
 #endif /* FECHA_H_ */

@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "INPUT.h"
 #include "TIPO.h"
@@ -25,6 +26,12 @@ typedef struct
 	int tipoId;
 	int isEmpty;
 }eTransporte;
+
+int existeTransporte(eTransporte *listaTransporte, int tam, int id);
+
+int ordenarTransportes(eTransporte *listaTransporte, int tam);
+
+int swapTransporte(eTransporte *transporteA,eTransporte *transporteB);
 
 
 int modificarTransporte(eTransporte *listaTransporte, int tam);

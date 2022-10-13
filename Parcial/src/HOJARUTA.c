@@ -101,7 +101,7 @@ int altaHoja(eHojaRuta *listaHojas, eTransporte*listaTransporte ,int tam, int *i
 
 		if(!listarTransportes(listaTransporte, tam))
 		{
-			printf("ERROR - no se ingreso ningun transporte todavia");
+			printf("ERROR - no se ingreso ningun transporte todavia\n");
 			return EXIT_FAILURE;
 		}
 

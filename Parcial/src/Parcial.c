@@ -73,11 +73,15 @@ int main(void) {
 				break;
 			case 4:
 				printf("Lista Transporte\n");
-				listarTransportes(listaTransportes,TAM);
+				if(!listarTransportes(listaTransportes,TAM))
+				{
+					printf("ERROR - No hay transportes cargados");
+				}
 				break;
 			case 5:
 				printf("Listar Tipos\n");
 				listarTipos(tipos, TAM_TIPOS);
+
 				break;
 			case 6:
 				printf("Alta Hoja de ruta\n");

@@ -27,17 +27,66 @@ typedef struct
 	int isEmpty;
 }eTransporte;
 
+/**
+ * @fn int existeTransporte(eTransporte*, int, int)
+ * @brief busca dentro de la lista dada como parametro la existencia de una
+ * entidad cuyo ID coincida con aquel dado de parametro
+ *
+ * @param listaTransporte
+ * @param tam
+ * @param id
+ * @return
+ */
 int existeTransporte(eTransporte *listaTransporte, int tam, int id);
 
+/**
+ * @fn int ordenarTransportes(eTransporte*, int)
+ * @brief Ordena las entidades primero por id de tipo y luego por descripcion
+ *
+ * @param listaTransporte puntero a la lista de transportes
+ * @param tam
+ * @return retorna 0 en caso de swappeo exitoso y 1 en caso de error
+ */
 int ordenarTransportes(eTransporte *listaTransporte, int tam);
 
+/**
+ * @fn int swapTransporte(eTransporte*, eTransporte*)
+ * @brief Swappea de indice los transportes dados como parametros
+ *
+ * @param transporteA
+ * @param transporteB
+ * @return retorna 0 en caso de orden exitoso y 1 en caso de error
+ */
 int swapTransporte(eTransporte *transporteA,eTransporte *transporteB);
 
-
+/**
+ * @fn int modificarTransporte(eTransporte*, int)
+ * @brief le pide al usuario que ingrese el id de una de las entidades cargadas
+ * 		y si existe le pregunta que desea modificar, y luego le modifica el valor dado
+ *
+ * @param listaTransporte puntero a la lista de transportes
+ * @param tam
+ * @return retorna 0 en caso de modificacion exitosa y 1 en caso de error
+ */
 int modificarTransporte(eTransporte *listaTransporte, int tam);
 
+/**
+ * @fn int submenuModificar(void)
+ * @brief	Imprime el submenu de modificar y le pide al usuario que ingrese una de las opciones disponibles
+ *
+ * @return retorna el valor de la opcion elegida
+ */
 int submenuModificar(void);
 
+/**
+ * @fn int bajaTransporte(eTransporte*, int)
+ * @brief	Pide al usuario que ingrese el id de una entidad, lo valida y si existe le da
+ *  una baja logica
+ *
+ * @param listaTransporte puntero a la lista de transportes
+ * @param tam
+ * @return retorna 0 en caso de baja exitosa y 1 en caso de error
+ */
 int bajaTransporte(eTransporte *listaTransporte, int tam);
 
 /**

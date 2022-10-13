@@ -27,7 +27,7 @@ int main(void) {
 	eHojaRuta listaHojaRuta[TAM];
 	int idHojaRuta=MIN_HOJA_ID;
 
-	int salida=1;
+	int salida=0;
 
 	if(inicializarTransporte(listaTransportes, TAM))
 	{
@@ -92,6 +92,10 @@ int main(void) {
 				break;
 			case 7:
 				printf("Listar hojas de ruta\n");
+				if(!listarHojas(listaHojaRuta, TAM))
+				{
+					printf("No se cargo ninguna hoja");
+				}
 				break;
 			case 8:
 				printf("Informe\n");

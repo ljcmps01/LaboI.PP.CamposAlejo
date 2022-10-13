@@ -76,7 +76,7 @@ void cargarFloat(float *dato)
 				//exitosamente
 				flagError=1;
 
-			}while(!exito);
+			}while(!exito||aux<=0);
 
 			*dato=aux;
 	}
@@ -84,7 +84,7 @@ void cargarFloat(float *dato)
 
 void cargarInt(int *dato)
 {
-	if(dato!=NULL&&dato>0)
+	if(dato!=NULL)
 	{
 		int aux;
 		int exito;
@@ -101,7 +101,7 @@ void cargarInt(int *dato)
 			exito=scanf("%d",&aux);
 			flagError=1;
 
-		}while(!exito);
+		}while(!exito||aux<=0);
 
 		*dato=aux;
 	}

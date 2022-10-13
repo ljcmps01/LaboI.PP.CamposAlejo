@@ -25,6 +25,10 @@ typedef struct
 }eHojaRuta;
 
 
+int listarHojas(eHojaRuta *listaHoja, int tam);
+
+int mostrarFilaHoja(eHojaRuta *hoja);
+
 int altaHoja(eHojaRuta *listaHojas, eTransporte*listaTransporte ,int tam, int *id);
 
 int siguienteHojaEmpty(eHojaRuta *listaHojas,int tam);

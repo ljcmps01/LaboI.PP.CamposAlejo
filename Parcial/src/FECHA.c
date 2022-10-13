@@ -9,7 +9,7 @@
 
 void mostrarFecha(eFecha fecha)
 {
-	printf("%d / %d / %d \n", fecha.dia, fecha.mes, fecha.anio);
+	printf("%d / %d / %d ", fecha.dia, fecha.mes, fecha.anio);
 }
 
 int validarDia(int dia)
@@ -28,7 +28,7 @@ int validarAnio(int anio)
 	return anio>MIN_ANIO;
 }
 
-void cargarFecha(eFecha fecha)
+void cargarFecha(eFecha *fecha)
 {
 	eFecha temporal;
 
@@ -49,4 +49,5 @@ void cargarFecha(eFecha fecha)
 		printf("Ingrese anio: \n");
 	cargarInt(&temporal.anio);
 	}while(!validarAnio(temporal.anio));
+	*fecha=temporal;
 }

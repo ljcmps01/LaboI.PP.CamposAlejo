@@ -16,7 +16,7 @@ int existeTransporte(eTransporte *listaTransporte, int tam, int id)
 	{
 		for(int i=0;i<tam;i++)
 		{
-			if(id==(listaTransporte+i)->idTransporte)
+			if(id==(*(listaTransporte+i)).idTransporte)
 			{
 				return 1;
 			}
@@ -36,15 +36,15 @@ int ordenarTransportes(eTransporte *listaTransporte, int tam)
 	{
 		for(int i=0; i<tam-1;i++)
 		{
-			if((listaTransporte+i)->isEmpty)continue;
+			if((*(listaTransporte+i)).isEmpty)continue;
 
-			getDescripcionTipo(tipoDescripcionA, (listaTransporte+i)->tipoId, tipos);
+			getDescripcionTipo(tipoDescripcionA, (*(listaTransporte+i)).tipoId, tipos);
 
 			for(int j=i+1;j<tam;j++)
 			{
-				if((listaTransporte+j)->isEmpty)continue;
+				if((*(listaTransporte+j)).isEmpty)continue;
 
-				getDescripcionTipo(tipoDescripcionB, (listaTransporte+j)->tipoId, tipos);
+				getDescripcionTipo(tipoDescripcionB, (*(listaTransporte+j)).tipoId, tipos);
 
 				comparacionTipo=strcmp(tipoDescripcionA,tipoDescripcionB);
 				if(comparacionTipo>0)
@@ -54,7 +54,7 @@ int ordenarTransportes(eTransporte *listaTransporte, int tam)
 
 				else if (comparacionTipo==0)
 				{
-					comparacionDesc=strcmp((listaTransporte+i)->descripcion,(listaTransporte+j)->descripcion);
+					comparacionDesc=strcmp((*(listaTransporte+i)).descripcion,(*(listaTransporte+j)).descripcion);
 
 					if(comparacionDesc>0)
 					{
@@ -98,17 +98,17 @@ int modificarTransporte(eTransporte *listaTransporte, int tam)
 				cargarInt(&idModificacion);
 				indiceModificacion=indicePorID(listaTransporte, tam, idModificacion);
 
-				if(indiceModificacion!=-1 && !((listaTransporte+indiceModificacion)->isEmpty))
+				if(indiceModificacion!=-1 && !((*(listaTransporte+indiceModificacion)).isEmpty))
 				{
 
 					switch (submenuModificar()) {
 						case 1:
 							printf("Ingrese nuevo peso de carga: \n");
-							cargarInt(&(listaTransporte+indiceModificacion)->pesoCarga);
+							cargarInt(&(*(listaTransporte+indiceModificacion)).pesoCarga);
 							break;
 						case 2:
 							printf("Ingrese nueva cantidad de bultos: \n");
-							cargarInt(&(listaTransporte+indiceModificacion)->cantidadBultos);
+							cargarInt(&(*(listaTransporte+indiceModificacion)).cantidadBultos);
 							break;
 						default:
 
@@ -158,7 +158,7 @@ int bajaTransporte(eTransporte *listaTransporte, int tam)
 
 			if(indiceBaja!=-1 && !((listaTransporte+indiceBaja)->isEmpty))
 			{
-				(listaTransporte+indiceBaja)->isEmpty=1;
+				(*(listaTransporte+indiceBaja)).isEmpty=1;
 				return EXIT_SUCCESS;
 			}
 			else
@@ -177,7 +177,7 @@ int indicePorID(eTransporte *listaTransporte, int tam, int id)
 	{
 		for(int i=0;i<tam;i++)
 		{
-			if((listaTransporte+i)->idTransporte==id)
+			if((*(listaTransporte+i)).idTransporte==id)
 			{
 				indice=i;
 				break;
@@ -195,7 +195,7 @@ int listarTransportes(eTransporte *listaTransporte, int tam)
 		ordenarTransportes(listaTransporte, tam);
 		for(int i=0;i<tam;i++)
 		{
-			if(!((listaTransporte+i)->isEmpty))
+			if(!((*(listaTransporte+i)).isEmpty))
 			{
 				if(contadorDeTransportes==0)
 				{
@@ -303,7 +303,7 @@ int siguienteTransporteEmpty(eTransporte *listaTransporte, int tam)
 	{
 		while(siguienteLibre<tam)
 		{
-			if(((listaTransporte+siguienteLibre)->isEmpty))
+			if(((*(listaTransporte+siguienteLibre)).isEmpty))
 			{
 				return siguienteLibre;
 			}
@@ -342,7 +342,7 @@ int inicializarTransporte(eTransporte *transporte,int tam)
 	{
 		while(contador<tam)
 		{
-			(transporte+contador)->isEmpty=1;
+			(*(transporte+contador)).isEmpty=1;
 			contador++;
 		}
 	}

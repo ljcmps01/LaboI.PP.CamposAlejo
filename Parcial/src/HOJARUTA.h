@@ -65,7 +65,6 @@ int altaHoja(eHojaRuta *listaHojas, eTransporte*listaTransporte ,int tam, int *i
  * @param tam cantidad de hojas de ruta a inicializar
  * @return retorna el indice de la entidad libre
  */
- */
 int siguienteHojaEmpty(eHojaRuta *listaHojas,int tam);
 
 /**

@@ -41,3 +41,23 @@ int mostrarTransportexTipo(eTransporte *listaTransporte, int tam)
 
 	return EXIT_FAILURE;
 }
+
+
+int mostrarHojasxFecha(eHojaRuta *listaHojas, int tam)
+{
+	eFecha fecha;
+	if(listaHojas!=NULL && tam>0)
+	{
+		printf("Ingrese fecha a buscar:\n");
+		cargarFecha(&fecha);
+
+		printf("Se ingreso la fecha: ");
+		mostrarFecha(fecha);
+		printf("\n");
+
+		imprimirHojasxFecha(listaHojas, tam, fecha);
+
+		return EXIT_SUCCESS;
+	}
+	return EXIT_FAILURE;
+}

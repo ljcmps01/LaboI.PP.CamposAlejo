@@ -35,6 +35,8 @@ typedef struct
 }eHojaRuta;
 
 
+int imprimirHojasxFecha(eHojaRuta *listaHoja, int tam, eFecha fechaUsuario);
+
 /**
  * @fn int listarHojas(eHojaRuta*, int)
  * @brief imprime la lista de hojas de ruta cargadas y no vacias
@@ -87,6 +89,19 @@ int siguienteHojaEmpty(eHojaRuta *listaHojas,int tam);
  */
 int inicializarHojas(eHojaRuta *listaHojas,int tam);
 
+
+/********************************************************************************
+ * 							funciones eFecha									*
+ ********************************************************************************/
+
+/**
+ * @brief Compara dos fechas por igualdad
+ *
+ * @param a
+ * @param b
+ * @return	retorna 0 si son distintas y 1 si son iguales
+ */
+int compararFechas(eFecha a,eFecha b);
 
 /**
  * @fn void mostrarFecha(eFecha)

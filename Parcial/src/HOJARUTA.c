@@ -8,6 +8,28 @@
 
 #include "HOJARUTA.h"
 
+int imprimirHojasxFecha(eHojaRuta *listaHoja, int tam, eFecha fechaUsuario)
+{
+	int coincidencias=0;
+	if(listaHoja!=NULL && tam>0)
+	{
+		for(int i=0;i<tam;i++)
+		{
+			if(compararFechas((*(listaHoja+i)).fecha, fechaUsuario))
+			{
+				mostrarFilaHoja((listaHoja+i));
+				coincidencias++;
+			}
+		}
+		if(coincidencias==0)
+		{
+			printf("No se encontraron hojas con la fecha dada\n");
+		}
+
+		return EXIT_SUCCESS;
+	}
+	return EXIT_FAILURE;
+}
 
 int listarHojas(eHojaRuta *listaHoja, int tam)
 {
@@ -140,6 +162,26 @@ int altaHoja(eHojaRuta *listaHojas, eTransporte*listaTransporte ,int tam, int *i
 	}
 
 	return EXIT_FAILURE;
+}
+
+/********************************************************************************
+ * 							funciones eFecha									*
+ ********************************************************************************/
+
+int compararFechas(eFecha a,eFecha b)
+{
+	if(a.dia==b.dia)
+	{
+		if(a.mes==b.mes)
+		{
+			if(a.anio==b.anio)
+			{
+				return 1;
+			}
+		}
+	}
+
+	return 0;
 }
 
 void mostrarFecha(eFecha fecha)

@@ -111,7 +111,8 @@ int main(void) {
 
 					case 2:
 						printf("Mostrar todas las hojas de ruta efectuadas en una fecha seleccionada\n");
-					break;
+						mostrarHojasxFecha(listaHojaRuta, TAM);
+						break;
 
 					case 3:
 						printf("Informar importe total de las hojas de ruta realizadas en un transporte seleccionado\n");

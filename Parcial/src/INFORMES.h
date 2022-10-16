@@ -15,6 +15,7 @@ int submenuInformes();
 
 int mostrarTransportexTipo(eTransporte *listaTransporte, int tam);
 
+int mostrarHojasxFecha(eHojaRuta *listaHojas, int tam);
 
 
 #endif /* INFORMES_H_ */

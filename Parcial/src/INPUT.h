@@ -28,6 +28,7 @@ int esSoloLetra(char *pResultado);
 */
 int esLetraConEspacio(char *pResultado);
 
+int cargarString(char *string,int tam);
 
 int enRango(int dato,int min, int max);
 

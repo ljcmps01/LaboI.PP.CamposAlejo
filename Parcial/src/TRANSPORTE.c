@@ -281,8 +281,7 @@ int altaTransporte(eTransporte *listaTransporte, int tam, int* pSigID)
 		bufferTransporte.idTransporte=*pSigID;
 
 			printf("ingrese descripcion del transporte\n");
-			fflush(stdin);
-			scanf("%30s",bufferTransporte.descripcion);
+			cargarString(bufferTransporte.descripcion, 30);
 
 		printf("ingrese peso de la carga\n");
 		cargarInt(&bufferTransporte.pesoCarga);

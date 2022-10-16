@@ -50,6 +50,26 @@ int esLetraConEspacio(char *pResultado)
 	return 1;
 }
 
+int cargarString(char *string,int tam)
+{
+	int contador=0;
+	if(string!=NULL && tam>0)
+	{
+		fflush(stdin);
+		fgets(string,tam,stdin);
+		while(*(string+contador)!='\0'||contador<tam)
+		{
+			if(*(string+contador)=='\n')
+			{
+				*(string+contador)='\0';
+			}
+			contador++;
+		}
+		return EXIT_SUCCESS;
+	}
+	return EXIT_FAILURE;
+}
+
 int enRango(int dato,int min, int max)
 {
 	return (dato>=min && dato<=max);

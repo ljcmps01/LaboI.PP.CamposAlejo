@@ -13,7 +13,6 @@
 #include <string.h>
 
 #include "INPUT.h"
-//#include "TIPO.h"
 
 #define MIN_TRASNPORTE_ID 10000
 

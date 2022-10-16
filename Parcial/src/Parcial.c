@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "TIPO.h"
 #include "TRANSPORTE.h"
 #include "HOJARUTA.h"
 

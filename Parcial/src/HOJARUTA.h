@@ -8,11 +8,21 @@
 #ifndef HOJARUTA_H_
 #define HOJARUTA_H_
 
-#include "FECHA.h"
+#include "UTN.h"
 #include "TRANSPORTE.h"
 #include "INPUT.h"
 
+#define MIN_ANIO 1900
+
 #define MIN_HOJA_ID 20000
+
+typedef struct
+{
+	int dia;
+	int mes;
+	int anio;
+}
+eFecha;
 
 typedef struct
 {
@@ -76,5 +86,50 @@ int siguienteHojaEmpty(eHojaRuta *listaHojas,int tam);
  * @return retorna 0 en caso de exito y 1 en caso de error
  */
 int inicializarHojas(eHojaRuta *listaHojas,int tam);
+
+
+/**
+ * @fn void mostrarFecha(eFecha)
+ * @brief imprime los datos de la entidad pasada como parametro ya formateados
+ *
+ * @param fecha
+ */
+void mostrarFecha(eFecha fecha);
+
+/**
+ * @fn int validarDia(int)
+ * @brief Valida que el dia este dentro de un rango (1:31)
+ *
+ * @param mes valor del dia a analizar
+ * @return retorna 1 si el valor pasado de parametro es valido, 0 si no lo es
+ */
+int validarDia(int dia);
+
+
+/**
+ * @fn int validarMes(int)
+ * @brief Valida que el mes este dentro de un rango (1:12)
+ *
+ * @param mes valor del mes a analizar
+ * @return retorna 1 si el valor pasado de parametro es valido, 0 si no lo es
+ */
+int validarMes(int mes);
+
+/**
+ * @fn int validarAnio(int)
+ * @brief Valida que el año sea positivo y mayor que un minimo constante (MIN_ANIO)
+ *
+ * @param anio valor del año a analizar
+ * @return retorna 1 si el valor pasado de parametro es valido, 0 si no lo es
+ */
+int validarAnio(int anio);
+
+/**
+ * @fn void cargarFecha(eFecha*)
+ * @brief Carga los datos de una fecha en una entidad eFecha pasada como puntero
+ *
+ * @param fecha Puntero a cargar
+ */
+void cargarFecha(eFecha *fecha);
 
 #endif /* HOJARUTA_H_ */

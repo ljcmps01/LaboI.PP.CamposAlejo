@@ -16,7 +16,7 @@ int listarHojas(eHojaRuta *listaHoja, int tam)
 	{
 		for(int i=0;i<tam;i++)
 		{
-			if(!((listaHoja+i)->isEmpty))
+			if(!((*(listaHoja+i)).isEmpty))
 			{
 				if(contadorDeHojas==0)
 				{
@@ -38,8 +38,8 @@ int mostrarFilaHoja(eHojaRuta *hoja)
 {
 	if(hoja!=NULL)
 	{
-		printf("|%-5d|%16d|%9.2f|%8d|      ",hoja->idHoja,hoja->transporteId,hoja->precioViaje,hoja->kmsTotales);
-		mostrarFecha(hoja->fecha);
+		printf("|%-5d|%16d|%9.2f|%8d|      ",(*hoja).idHoja,(*hoja).transporteId,(*hoja).precioViaje,(*hoja).kmsTotales);
+		mostrarFecha((*hoja).fecha);
 		printf("|\n");
 		return EXIT_SUCCESS;
 	}
@@ -54,7 +54,7 @@ int inicializarHojas(eHojaRuta *listaHojas,int tam)
 		{
 			while(contador<tam)
 			{
-				(listaHojas+contador)->isEmpty=1;
+				(*(listaHojas+contador)).isEmpty=1;
 				contador++;
 			}
 		}
@@ -73,7 +73,7 @@ int siguienteHojaEmpty(eHojaRuta *listaHojas,int tam)
 		{
 			while(siguienteLibre<tam)
 			{
-				if(((listaHojas+siguienteLibre)->isEmpty))
+				if(((*(listaHojas+siguienteLibre)).isEmpty))
 				{
 					return siguienteLibre;
 				}

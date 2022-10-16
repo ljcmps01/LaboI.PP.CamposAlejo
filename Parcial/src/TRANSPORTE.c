@@ -10,6 +10,45 @@
 #define HARDCODED_N 4
 
 
+eTipo tipos[TAM_TIPOS]=
+{
+		{1000,"Camion recto"},
+		{1001,"Camion remolque"},
+		{1002,"Camion semirremolque"},
+		{1003,"Camion elevador"}
+};
+
+
+int getDescripcionTipo(char *destino,int tipoID,eTipo* listaTipos)
+{
+	if(destino!=NULL && listaTipos!=NULL)
+	{
+		for(int i=0;i<TAM_TIPOS;i++)
+		{
+			if(tipoID==(*(listaTipos+i)).idTipo)
+			{
+				strcpy(destino,(*(listaTipos+i)).descripcion);
+				return 1;
+			}
+		}
+		printf("idTipo error\n");
+		return 0;
+	}
+	return 0;
+}
+
+void listarTipos(eTipo* listaTipos, int tam)
+{
+	if(listaTipos!=NULL && tam>0)
+	{
+		for(int i=0;i < tam;i++)
+		{
+			printf("%d - %s\n",(*(listaTipos+i)).idTipo,(*(listaTipos+i)).descripcion);
+		}
+	}
+}
+
+
 int existeTransporte(eTransporte *listaTransporte, int tam, int id)
 {
 	if(listaTransporte!=NULL && tam>0)
@@ -156,7 +195,7 @@ int bajaTransporte(eTransporte *listaTransporte, int tam)
 			cargarInt(&idBaja);
 			indiceBaja=indicePorID(listaTransporte, tam, idBaja);
 
-			if(indiceBaja!=-1 && !((listaTransporte+indiceBaja)->isEmpty))
+			if(indiceBaja!=-1 && !((*(listaTransporte+indiceBaja)).isEmpty))
 			{
 				(*(listaTransporte+indiceBaja)).isEmpty=1;
 				return EXIT_SUCCESS;
@@ -218,8 +257,8 @@ int mostrarFilaTransporte(eTransporte *transporte)
 	char descripcionTipo[20];
 	if(transporte!=NULL)
 	{
-		getDescripcionTipo(descripcionTipo, transporte->tipoId, tipos);
-		printf("|%-5d|%-20s|%7d|%7d|%20s|\n",transporte->idTransporte,transporte->descripcion,transporte->pesoCarga,transporte->cantidadBultos,descripcionTipo);
+		getDescripcionTipo(descripcionTipo, (*transporte).tipoId, tipos);
+		printf("|%-5d|%-20s|%7d|%7d|%20s|\n",(*transporte).idTransporte,(*transporte).descripcion,(*transporte).pesoCarga,(*transporte).cantidadBultos,descripcionTipo);
 		return EXIT_SUCCESS;
 	}
 	return EXIT_FAILURE;

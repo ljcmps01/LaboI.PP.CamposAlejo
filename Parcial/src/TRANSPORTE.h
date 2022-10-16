@@ -13,9 +13,17 @@
 #include <string.h>
 
 #include "INPUT.h"
-#include "TIPO.h"
+//#include "TIPO.h"
 
 #define MIN_TRASNPORTE_ID 10000
+
+#define TAM_TIPOS 4
+
+typedef struct
+{
+	int idTipo;
+	char descripcion[30];
+}eTipo;
 
 typedef struct
 {
@@ -26,6 +34,12 @@ typedef struct
 	int tipoId;
 	int isEmpty;
 }eTransporte;
+
+eTipo tipos[TAM_TIPOS];
+
+int getDescripcionTipo(char *destino,int tipoID,eTipo* listaTipos);
+
+void listarTipos(eTipo* listaTipos, int tam);
 
 /**
  * @fn int existeTransporte(eTransporte*, int, int)

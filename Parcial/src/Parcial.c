@@ -13,6 +13,7 @@
 
 #include "TRANSPORTE.h"
 #include "HOJARUTA.h"
+#include "INFORMES.h"
 
 #define TAM 10
 
@@ -101,6 +102,28 @@ int main(void) {
 				break;
 			case 8:
 				printf("Informe\n");
+				switch(submenuInformes())
+				{
+					case 1:
+						printf("Mostrar transportes de un tipo\n");
+						mostrarTransportexTipo(listaTransportes, TAM);
+					break;
+
+					case 2:
+						printf("Mostrar todas las hojas de ruta efectuadas en una fecha seleccionada\n");
+					break;
+
+					case 3:
+						printf("Informar importe total de las hojas de ruta realizadas en un transporte seleccionado\n");
+					break;
+
+					case 4:
+						printf("Informar importe total de todas las hojas de ruta de un tipo en una fechaseleccionada\n");
+					break;
+
+					default:
+						break;
+				}
 				break;
 			default:
 				printf("SALIDA\n");

@@ -36,6 +36,8 @@ typedef struct
 
 eTipo tipos[TAM_TIPOS];
 
+int imprimirTransportexTipo(eTransporte *listaTransporte, int tam, int idTipo);
+
 int getDescripcionTipo(char *destino,int tipoID,eTipo* listaTipos);
 
 void listarTipos(eTipo* listaTipos, int tam);

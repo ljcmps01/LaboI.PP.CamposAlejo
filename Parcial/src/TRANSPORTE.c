@@ -19,6 +19,31 @@ eTipo tipos[TAM_TIPOS]=
 };
 
 
+int imprimirTransportexTipo(eTransporte *listaTransporte, int tam, int idTipo)
+{
+	int coincidencias=0;
+	if(listaTransporte!=NULL && tam>0)
+	{
+		for(int i=0;i<tam;i++)
+		{
+			if((*(listaTransporte+i)).isEmpty)continue;
+			if((*(listaTransporte+i)).tipoId==idTipo)
+			{
+				mostrarFilaTransporte((listaTransporte+i));
+				coincidencias++;
+			}
+		}
+		if(!coincidencias)
+		{
+			printf("No se encontro ningun Transporte de ese tipo\n");
+		}
+		return EXIT_SUCCESS;
+
+	}
+
+	return EXIT_FAILURE;
+}
+
 int getDescripcionTipo(char *destino,int tipoID,eTipo* listaTipos)
 {
 	if(destino!=NULL && listaTipos!=NULL)

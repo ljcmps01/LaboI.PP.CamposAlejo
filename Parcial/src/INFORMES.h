@@ -17,5 +17,7 @@ int mostrarTransportexTipo(eTransporte *listaTransporte, int tam);
 
 int mostrarHojasxFecha(eHojaRuta *listaHojas, int tam);
 
+int mostrarPrecioxTransporte(eTransporte *listaTransporte, eHojaRuta *listaHojas, int tam);
 
+int precioxTransporte(eHojaRuta *listaHojas, int tam, int idTransporte);
 #endif /* INFORMES_H_ */

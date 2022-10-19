@@ -129,12 +129,8 @@ int altaHoja(eHojaRuta *listaHojas, eTransporte*listaTransporte ,int tam, int *i
 
 		do
 		{
-			printf("ingrese ID del transporte a asignar la hoja de ruta: (o 0 para cancelar)\n");
+			printf("ingrese ID del transporte a asignar la hoja de ruta: 	");
 			cargarInt(&bufferHojas.transporteId);
-			if(bufferHojas.transporteId==0)
-			{
-				return EXIT_FAILURE;
-			}
 
 		}while(!existeTransporte(listaTransporte, tam, bufferHojas.transporteId));
 

@@ -61,3 +61,59 @@ int mostrarHojasxFecha(eHojaRuta *listaHojas, int tam)
 	}
 	return EXIT_FAILURE;
 }
+
+
+int mostrarPrecioxTransporte(eTransporte *listaTransporte, eHojaRuta *listaHojas, int tam)
+{
+	int transporteID;
+	int precioTotal;
+	if(listaTransporte!=NULL && listaHojas !=NULL && tam>0)
+	{
+		if(!listarTransportes(listaTransporte, tam))
+		{
+			printf("ERROR - no se ingreso ningun transporte todavia\n");
+			return EXIT_FAILURE;
+		}
+
+		do
+		{
+			printf("ingrese ID del transporte a asignar la hoja de ruta: 	");
+			cargarInt(&transporteID);
+
+		}while(!existeTransporte(listaTransporte, tam, transporteID));
+
+		precioTotal=precioxTransporte(listaHojas, tam, transporteID);
+		if(precioTotal==-1)
+		{
+			printf("Error al sumar precios");
+		}
+		else
+		{
+			printf("Precio total del id dado: %d\n",precioTotal);
+		}
+	}
+	return EXIT_FAILURE;
+}
+
+
+int precioxTransporte(eHojaRuta *listaHojas, int tam, int idTransporte)
+{
+	int precioTotal=0;
+	if(listaHojas!=NULL && tam>0)
+	{
+		for (int i = 0; i < tam; ++i) {
+			if((*(listaHojas+i)).transporteId==idTransporte)
+			{
+				precioTotal+=(*(listaHojas+i)).precioViaje;
+			}
+		}
+		if(precioTotal==0)
+		{
+			printf("No se encontraron coincidencias\n");
+			return -1;
+		}
+		return precioTotal;
+	}
+
+	return -1;
+}

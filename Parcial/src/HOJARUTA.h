@@ -34,7 +34,16 @@ typedef struct
 	int isEmpty;
 }eHojaRuta;
 
-
+/**
+ * @fn int imprimirHojasxFecha(eHojaRuta*, int, eFecha)
+ * @brief Imprime las hojas de ruta que posean la misma fecha dada como parametro
+ *
+ * @param listaHoja puntero a la lista de hojas de ruta
+ * @param tam tamaño de la lista de hojas de ruta
+ * @param fechaUsuario fecha deseada a buscar
+ * @return	retorna 1 en caso de haber encontrado un error de punteros, 0 si
+ * se completo la funcion correctamente
+ */
 int imprimirHojasxFecha(eHojaRuta *listaHoja, int tam, eFecha fechaUsuario);
 
 /**

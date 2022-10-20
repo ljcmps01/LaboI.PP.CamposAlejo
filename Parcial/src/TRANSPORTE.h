@@ -36,10 +36,37 @@ typedef struct
 
 eTipo tipos[TAM_TIPOS];
 
+/**
+ * @fn int imprimirTransportexTipo(eTransporte*, int, int)
+ * @brief	imprime todos los transportes que posean el tipo pasado como parametro
+ *
+ * @param listaTransporte
+ * @param tam
+ * @param idTipo
+ * @return	retorna 1 en caso de error, 0 en caso de funcion ejecutada correctamente
+ */
 int imprimirTransportexTipo(eTransporte *listaTransporte, int tam, int idTipo);
 
+/**
+ * @fn int getDescripcionTipo(char*, int, eTipo*)
+ * @brief	guarda una cadena de caracteres que contiene la descripcion
+ * del id de tipo pasado como parametro
+ *
+ * @param destino	puntero a cadena de caracteres en la que guardara la
+ * descripcion de tipo
+ * @param tipoID	id del tipo que se busca obtener la descripcion
+ * @param listaTipos	lista de tipos
+ * @return
+ */
 int getDescripcionTipo(char *destino,int tipoID,eTipo* listaTipos);
 
+/**
+ * @fn void listarTipos(eTipo*, int)
+ * @brief	lista los tipos disponibles
+ *
+ * @param listaTipos
+ * @param tam
+ */
 void listarTipos(eTipo* listaTipos, int tam);
 
 /**

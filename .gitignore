@@ -50,6 +50,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-*/.metadata/
+.metadata/
 
-*/.settings/language.settings.xml
+Parcial/.settings/language.settings.xml

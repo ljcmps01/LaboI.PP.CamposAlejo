@@ -20,4 +20,8 @@ int mostrarHojasxFecha(eHojaRuta *listaHojas, int tam);
 int mostrarPrecioxTransporte(eTransporte *listaTransporte, eHojaRuta *listaHojas, int tam);
 
 int precioxTransporte(eHojaRuta *listaHojas, int tam, int idTransporte);
+
+int mostrarPrecioxTipoyFecha(eHojaRuta *listaHojas, eTransporte *listaTransporte, int tam);
+
+float precioxTipoyFecha(eHojaRuta *listaHojas, eTransporte *listaTransporte, int tam, int tipoID, eFecha fecha);
 #endif /* INFORMES_H_ */

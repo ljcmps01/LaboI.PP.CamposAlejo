@@ -117,3 +117,77 @@ int precioxTransporte(eHojaRuta *listaHojas, int tam, int idTransporte)
 
 	return -1;
 }
+
+int mostrarPrecioxTipoyFecha(eHojaRuta *listaHojas, eTransporte *listaTransporte, int tam)
+{
+	int bufferTipo;
+	eFecha bufferFecha;
+	float importeTotal;
+
+	if(listaHojas!=NULL && listaTransporte!=NULL && tam>0)
+	{
+		printf("ingrese tipo\n");
+		listarTipos(tipos, TAM_TIPOS);
+
+		intEnRango(&bufferTipo, 1000, 1004);
+
+		cargarFecha(&bufferFecha);
+
+		importeTotal=precioxTipoyFecha(listaHojas, listaTransporte, tam, bufferTipo, bufferFecha);
+
+		if(importeTotal>0)
+		{
+			printf("El importe total es de: $%.2f\n",importeTotal);
+		}
+		else
+		{
+			if(importeTotal==0)
+			{
+				printf("No se encontro hojas de ruta con los datos ingresados\n");
+			}
+			else
+			{
+
+				printf("ERROR validacion de punteros\n");
+			}
+		}
+
+		return(EXIT_SUCCESS);
+	}
+
+
+	return EXIT_FAILURE;
+}
+
+float precioxTipoyFecha(eHojaRuta *listaHojas, eTransporte *listaTransporte, int tam, int tipoID, eFecha fecha)
+{
+	int bufferIndiceTransporte;
+	float importeAcumulado=0;
+
+	if(listaHojas!=NULL && listaTransporte!=NULL && tam>0)
+	{
+		for (int i = 0; i < tam; ++i) {
+			if(compararFechas((*(listaHojas+i)).fecha, fecha))
+			{
+				bufferIndiceTransporte=indicePorID(listaTransporte, tam, (*(listaHojas+i)).transporteId);
+				if((*(listaTransporte+bufferIndiceTransporte)).tipoId==tipoID)
+				{
+					importeAcumulado+=(*(listaHojas+i)).precioViaje;
+				}
+			}
+		}
+		return importeAcumulado;
+	}
+
+	return -1;
+}
+
+
+
+
+
+
+
+
+
+

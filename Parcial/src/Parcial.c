@@ -117,11 +117,13 @@ int main(void) {
 					case 3:
 						printf("Informar importe total de las hojas de ruta realizadas en un transporte seleccionado\n");
 						mostrarPrecioxTransporte(listaTransportes, listaHojaRuta, TAM);
-					break;
+
+						break;
 
 					case 4:
 						printf("Informar importe total de todas las hojas de ruta de un tipo en una fechaseleccionada\n");
-					break;
+						mostrarPrecioxTipoyFecha(listaHojaRuta, listaTransportes, TAM);
+						break;
 
 					default:
 						break;
